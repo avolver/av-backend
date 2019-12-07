@@ -1,0 +1,62 @@
+{
+    "name": "avolver/av-backend",
+    "description": "Volunteers on cars: backend",
+    "type": "project",
+    "license": "GPL-3.0",
+    "require": {
+        "php":                                 ">=7.4.0",
+        "symfony/framework-bundle":            "5.0.1",
+        "symfony/monolog-bundle":              "3.5.0",
+        "doctrine/doctrine-bundle":            "2.0.2",
+        "doctrine/orm":                        "2.7.0",
+        "doctrine/doctrine-migrations-bundle": "2.1.2",
+        "doctrine/doctrine-fixtures-bundle":   "3.3.0",
+        "snc/redis-bundle":                    "3.2.1",
+        "predis/predis":                       "1.1.1",
+        "k911/swoole-bundle":                  "0.7.4"
+    },
+    "require-dev": {
+        "symfony/debug-bundle":         "5.0.1",
+        "symfony/maker-bundle":         "1.14.3",
+        "fzaninotto/faker":             "1.9.0",
+        "roave/security-advisories":    "dev-master",
+        "phpunit/phpunit":              "8.5.0",
+        "pyrech/composer-changelogs":   "1.7.0",
+        "sllh/composer-versions-check": "2.0.3"
+    },
+    "replace": {
+        "paragonie/random_compat":   "2.*",
+        "symfony/polyfill-ctype":    "*",
+        "symfony/polyfill-iconv":    "*",
+        "symfony/polyfill-intl-icu": "*",
+        "symfony/polyfill-intl-idn": "*",
+        "symfony/polyfill-mbstring": "*",
+        "symfony/polyfill-php73":    "*",
+        "symfony/polyfill-php72":    "*",
+        "symfony/polyfill-php71":    "*",
+        "symfony/polyfill-php70":    "*",
+        "symfony/polyfill-php56":    "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Av\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Av\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true,
+        "platform": {
+            "ext-swoole": "4.4.7"
+        },
+        "vendor-dir": "lib"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}

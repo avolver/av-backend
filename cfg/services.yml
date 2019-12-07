@@ -1,0 +1,11 @@
+services:
+
+    # Точки входа: actions
+    Av\Action\:
+        resource: '../src/Action'
+        tags: ['controller.service_arguments']
+        autowire: true
+
+    # Doctrine платформа для PostgreSQL 12
+    Av\Common\Doctrine\PostgreSQL120Platform:
+        public: true

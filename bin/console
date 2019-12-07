@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types = 1);
+
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\ErrorHandler\Debug;
+use Av\Common\Kernel;
+
+\set_time_limit(0);
+
+require \dirname(__DIR__).'/lib/autoload.php';
+
+$_ENV['APP_ENV'] = getenv('APP_ENV') ?: 'dev';
+
+$input = new ArgvInput();
+if (null !== $env = $input->getParameterOption(['--env', '-e'], null, true)) {
+    putenv('APP_ENV='. ($_ENV['APP_ENV'] = $env));
+}
+
+$_ENV['APP_DEBUG'] = (bool) (getenv('APP_DEBUG') ?: 'dev' === $_ENV['APP_ENV']);
+if ($input->hasParameterOption('--no-debug', true)) {
+    putenv('APP_DEBUG=' . (($_ENV['APP_DEBUG'] = false) ? '1' : '0'));
+}
+
+if ($_ENV['APP_DEBUG']) {
+    umask(0000);
+
+    if (class_exists(Debug::class)) {
+        Debug::enable();
+    }
+}
+
+$kernel = new Kernel($_SERVER['APP_ENV'] ?? 'dev', (bool) ($_SERVER['APP_DEBUG'] ?? false));
+$application = new Application($kernel);
+$application->run($input);

@@ -1,0 +1,27 @@
+doctrine:
+    dbal:
+        platform_service: Av\Common\Doctrine\PostgreSQL120Platform
+        driver: 'pdo_pgsql'
+        server_version: '12.0'
+        charset: utf8
+        default_table_options:
+            charset: utf8
+            collate: utf8_unicode_ci
+
+        url: '%app.database.url%'
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Domain/Entity'
+                prefix: 'Av\Domain\Entity'
+
+doctrine_migrations:
+    dir_name: '%kernel.project_dir%/src/Common/Migrations'
+    name: 'av migrations'
+    namespace: Av\Common\Migrations
+    column_length: 120

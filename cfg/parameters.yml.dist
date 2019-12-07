@@ -1,0 +1,4 @@
+parameters:
+    kernel.secret: 'nosay-nosay'
+    app.redis.host: 'localhost'
+    app.database.url: 'pgsql://postgres:postgres@localhost:5432/av_dev'

@@ -1,0 +1,15 @@
+imports:
+    - { resource: config.yml }
+
+framework:
+    profiler: { only_exceptions: false }
+
+maker:
+    root_namespace: 'Av\Domain'
+
+services:
+    Av\Tests\Fixture\:
+        resource: '../tests/Fixture/*'
+        autowire: false
+        tags:
+            - { name: 'doctrine.fixture.orm' }

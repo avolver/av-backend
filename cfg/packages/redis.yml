@@ -1,0 +1,41 @@
+snc_redis:
+    class:
+        connection_factory: Av\Common\RedisConnectionFactory
+    doctrine:
+        result_cache:
+            client: doctrine
+            document_manager: default
+        metadata_cache:
+            client: doctrine
+            document_manager: default
+        query_cache:
+            client: doctrine
+            document_manager: default
+        second_level_cache:
+            client: doctrine
+            document_manager: default
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: 'redis://%app.redis.host%/1'
+            options:
+                prefix: '%kernel.environment%::'
+        session:
+            type: predis
+            alias: session
+            dsn: 'redis://%app.redis.host%/2'
+            options:
+                prefix: '%kernel.environment%::'
+        cache:
+            type: predis
+            alias: cache
+            dsn: 'redis://%app.redis.host%/3'
+            options:
+                prefix: '%kernel.environment%::'
+        doctrine:
+            type: predis
+            alias: doctrine
+            dsn: 'redis://%app.redis.host%/4'
+            options:
+                prefix: '%kernel.environment%::'

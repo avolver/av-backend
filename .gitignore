@@ -1,0 +1,8 @@
+/cfg/parameters.yml
+/cfg/.phpunit.result.cache
+
+# vendor specific
+/.idea/
+/lib/
+/var/
+/web/bundles/

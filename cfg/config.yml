@@ -1,0 +1,14 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: packages/doctrine.yml }
+    - { resource: packages/redis.yml }
+
+framework:
+    router:
+        resource: '%kernel.project_dir%/cfg/routes.yml'
+        strict_requirements: true
+    default_locale: 'ru'
+    ide: "phpstorm://open?file=%%f&line=%%l"
+    cache:
+        app: cache.adapter.redis
+        default_redis_provider: snc_redis.cache
