@@ -1,0 +1,29 @@
+<?php
+declare(strict_types = 1);
+
+namespace Av\Domain\Repository;
+
+use Av\Domain\Entity\Interest;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Persistence\ManagerRegistry;
+
+/**
+ * Репозиторий интересов пациентов.
+ *
+ * @method Interest|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Interest|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Interest[]    findAll()
+ * @method Interest[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class InterestRepository extends ServiceEntityRepository
+{
+    /**
+     * Конструктор.
+     *
+     * @param ManagerRegistry $registry
+     */
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, Interest::class);
+    }
+}

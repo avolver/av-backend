@@ -8,6 +8,8 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
+ * Репозиторий клиник.
+ *
  * @method Clinic|null find($id, $lockMode = null, $lockVersion = null)
  * @method Clinic|null findOneBy(array $criteria, array $orderBy = null)
  * @method Clinic[]    findAll()
