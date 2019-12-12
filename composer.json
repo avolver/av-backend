@@ -18,7 +18,7 @@
     "require-dev": {
         "symfony/debug-bundle":         "5.0.1",
         "symfony/maker-bundle":         "1.14.3",
-        "fzaninotto/faker":             "1.9.0",
+        "fzaninotto/faker":             "1.9.1",
         "roave/security-advisories":    "dev-master",
         "phpunit/phpunit":              "8.5.0",
         "pyrech/composer-changelogs":   "1.7.0",

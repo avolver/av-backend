@@ -5,7 +5,7 @@ namespace Av\Domain\Repository;
 
 use Av\Domain\Entity\Participation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * Репозиторий прикреплений к мероприятям.

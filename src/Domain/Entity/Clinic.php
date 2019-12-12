@@ -3,6 +3,8 @@ declare(strict_types = 1);
 
 namespace Av\Domain\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -57,11 +59,27 @@ class Clinic
     private ?string $contactInfo = null;
 
     /**
+     * Список пациентов.
+     *
+     * @ORM\OneToMany(targetEntity="Av\Domain\Entity\Patient", mappedBy="clinic")
+     */
+    private Collection $patients;
+
+    /**
+     * Запросы пациентов.
+     *
+     * @ORM\OneToMany(targetEntity="Av\Domain\Entity\PatientRequest", mappedBy="clinic")
+     */
+    private Collection $patientRequests;
+
+    /**
      * Конструктор клиники.
      */
     public function __construct()
     {
-        $this->quarantine = false;
+        $this->quarantine      = false;
+        $this->patients        = new ArrayCollection();
+        $this->patientRequests = new ArrayCollection();
     }
 
     /**
@@ -190,6 +208,98 @@ class Clinic
     public function setContactInfo(?string $contactInfo): self
     {
         $this->contactInfo = $contactInfo;
+
+        return $this;
+    }
+
+    /**
+     * Получение списка пациентов в больнице.
+     *
+     * @return Collection|Patient[]
+     */
+    public function getPatients(): Collection
+    {
+        return $this->patients;
+    }
+
+    /**
+     * Добавление пациента в клинику.
+     *
+     * @param Patient $patient
+     *
+     * @return $this
+     */
+    public function addPatient(Patient $patient): self
+    {
+        if (!$this->patients->contains($patient)) {
+            $this->patients[] = $patient;
+            $patient->setClinic($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Удаление пациента и клиники.
+     *
+     * @param Patient $patient
+     *
+     * @return $this
+     */
+    public function removePatient(Patient $patient): self
+    {
+        if ($this->patients->contains($patient)) {
+            $this->patients->removeElement($patient);
+            if ($patient->getClinic() === $this) {
+                $patient->setClinic(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Получение запросов пациентов в данной клинике.
+     *
+     * @return Collection|PatientRequest[]
+     */
+    public function getPatientRequests(): Collection
+    {
+        return $this->patientRequests;
+    }
+
+    /**
+     * Добавление запросов пациентов.
+     *
+     * @param PatientRequest $patientRequest
+     *
+     * @return $this
+     */
+    public function addPatientRequest(PatientRequest $patientRequest): self
+    {
+        if (!$this->patientRequests->contains($patientRequest)) {
+            $this->patientRequests[] = $patientRequest;
+            $patientRequest->setClinic($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Удаление запросов пациентов.
+     *
+     * @param PatientRequest $patientRequest
+     *
+     * @return $this
+     */
+    public function removePatientRequest(PatientRequest $patientRequest): self
+    {
+        if ($this->patientRequests->contains($patientRequest)) {
+            $this->patientRequests->removeElement($patientRequest);
+            if ($patientRequest->getClinic() === $this) {
+                $patientRequest->setClinic(null);
+            }
+        }
 
         return $this;
     }

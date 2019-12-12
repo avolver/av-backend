@@ -3,6 +3,8 @@ declare(strict_types = 1);
 
 namespace Av\Domain\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -122,6 +124,21 @@ class Event
      * @ORM\Column(type="datetime", nullable=true)
      */
     private ?\DateTimeInterface $transportFinishTime = null;
+
+    /**
+     * Запросы пациентов.
+     *
+     * @ORM\OneToMany(targetEntity="Av\Domain\Entity\PatientRequest", mappedBy="event", orphanRemoval=true)
+     */
+    private Collection $patientRequests;
+
+    /**
+     * Конструктор.
+     */
+    public function __construct()
+    {
+        $this->patientRequests = new ArrayCollection();
+    }
 
     /**
      * Получение ID.
@@ -441,6 +458,52 @@ class Event
     public function setTransportFinishTime(?\DateTimeInterface $transportFinishTime): self
     {
         $this->transportFinishTime = $transportFinishTime;
+
+        return $this;
+    }
+
+    /**
+     * Получение запросов пациентов в данной клинике
+     *
+     * @return Collection|PatientRequest[]
+     */
+    public function getPatientRequests(): Collection
+    {
+        return $this->patientRequests;
+    }
+
+    /**
+     * Добавление запросов пациентов.
+     *
+     * @param PatientRequest $patientRequest
+     *
+     * @return $this
+     */
+    public function addPatientRequest(PatientRequest $patientRequest): self
+    {
+        if (!$this->patientRequests->contains($patientRequest)) {
+            $this->patientRequests[] = $patientRequest;
+            $patientRequest->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Удаление запросов пациентов.
+     *
+     * @param PatientRequest $patientRequest
+     *
+     * @return $this
+     */
+    public function removePatientRequest(PatientRequest $patientRequest): self
+    {
+        if ($this->patientRequests->contains($patientRequest)) {
+            $this->patientRequests->removeElement($patientRequest);
+            if ($patientRequest->getEvent() === $this) {
+                $patientRequest->setEvent(null);
+            }
+        }
 
         return $this;
     }
