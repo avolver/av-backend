@@ -21,19 +21,19 @@ declare(strict_types = 1);
 
 namespace Av\Domain\Repository;
 
-use Av\Domain\Entity\Place;
+use Av\Domain\Entity\Unit;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * Репозиторий мест, в которых проводятся мероприятия.
+ * Репозиторий направлений волонтёрства.
  *
- * @method Place|null find($id, $lockMode = null, $lockVersion = null)
- * @method Place|null findOneBy(array $criteria, array $orderBy = null)
- * @method Place[]    findAll()
- * @method Place[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Unit|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Unit|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Unit[]    findAll()
+ * @method Unit[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PlaceRepository extends ServiceEntityRepository
+class UnitRepository extends ServiceEntityRepository
 {
     /**
      * Конструктор.
@@ -42,6 +42,6 @@ class PlaceRepository extends ServiceEntityRepository
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Place::class);
+        parent::__construct($registry, Unit::class);
     }
 }

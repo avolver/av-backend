@@ -24,11 +24,11 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность типа мест, в которых проводятся мероприятия.
+ * Сущность направления волонтёрства.
  *
- * @ORM\Entity(repositoryClass="Av\Domain\Repository\PlaceTypeRepository")
+ * @ORM\Entity(repositoryClass="Av\Domain\Repository\UnitRepository")
  */
-class PlaceType
+class Unit
 {
     /**
      * Идентификатор.
@@ -40,34 +40,41 @@ class PlaceType
     private ?int $id = null;
 
     /**
-     * Название типа.
+     * Название.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $name;
 
     /**
+     * Тип.
+     *
+     * @ORM\Column(type="integer")
+     */
+    private int $type;
+
+    /**
      * Получение идентификатора.
      *
      * @return int|null
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * Получение названия типа.
+     * Получение названия.
      *
-     * @return string|null
+     * @return string
      */
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * Установка названия типа.
+     * Установка названия.
      *
      * @param string $name
      *
@@ -76,6 +83,30 @@ class PlaceType
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Получение типа.
+     *
+     * @return int
+     */
+    public function getType(): int
+    {
+        return $this->type;
+    }
+
+    /**
+     * Установка типа.
+     *
+     * @param int $type
+     *
+     * @return $this
+     */
+    public function setType(int $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
