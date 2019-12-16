@@ -24,37 +24,31 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность пациента
+ * Patient entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\PatientRepository")
  */
 class Patient
 {
     //
-    // Статусы пациента
+    // Patient status
     //
 
-    // За пределами больницы
+    // Outside the clinic
     public const STATUS_OUT = 0;
 
-    // В больнице
+    // In clinic
     public const STATUS_IN  = 1;
 
     //
-    // Согласие на публикацию фотографий
+    // Consent to publish photos
     //
-
-    // Не знаю
     public const CONSENT_TO_PUB_DONT_KNOW = 0;
-
-    // Да
     public const CONSENT_TO_PUB_DONT_YES = 1;
-
-    // Нет
     public const CONSENT_TO_PUB_DONT_NO = 2;
 
     /**
-     * Идентификатор.
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -63,63 +57,63 @@ class Patient
     private ?int $id = null;
 
     /**
-     * ФИО.
+     * Full name.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $name;
 
     /**
-     * Статус.
+     * Status.
      *
      * @ORM\Column(type="integer")
      */
     private int $status = self::STATUS_OUT;
 
     /**
-     * Дата регистрации.
+     * Registration date.
      *
      * @ORM\Column(type="datetime")
      */
     private \DateTimeInterface $registrationDate;
 
     /**
-     * Больница.
+     * Clinic.
      *
      * @ORM\ManyToOne(targetEntity="Av\Domain\Entity\Clinic", inversedBy="patients")
      */
     private Clinic $clinic;
 
     /**
-     * Дата рождения
+     * Date of birth.
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
     private ?\DateTimeInterface $birthday = null;
 
     /**
-     * Количество мероприятий, которые посетил пациент.
+     * The number of events the patient attended.
      *
      * @ORM\Column(type="integer")
      */
     private int $eventCount = 0;
 
     /**
-     * Согласие на публикацию фотографий.
+     * Consent to publish photos.
      *
      * @ORM\Column(type="integer")
      */
     private int $consentToPublication = self::CONSENT_TO_PUB_DONT_KNOW;
 
     /**
-     * Колясочник?
+     * Wheelchair user?
      *
      * @ORM\Column(type="boolean")
      */
     private bool $wheelchairUser = false;
 
     /**
-     * Получение идентификатора.
+     * Get ID.
      *
      * @return int|null
      */
@@ -129,7 +123,7 @@ class Patient
     }
 
     /**
-     * Получение ФИО.
+     * Get full name.
      *
      * @return string
      */
@@ -139,7 +133,7 @@ class Patient
     }
 
     /**
-     * Установка ФИО.
+     * Set full name.
      *
      * @param string $name
      *
@@ -153,7 +147,7 @@ class Patient
     }
 
     /**
-     * Получение статуса.
+     * Get status.
      *
      * @return int
      */
@@ -163,7 +157,7 @@ class Patient
     }
 
     /**
-     * Установка статуса.
+     * Set status.
      *
      * @param int $status
      *
@@ -177,7 +171,7 @@ class Patient
     }
 
     /**
-     * Получение даты и времени регистрации.
+     * Getting the date and time of registration.
      *
      * @return \DateTimeInterface
      */
@@ -187,7 +181,7 @@ class Patient
     }
 
     /**
-     * Установка даты и времени регистрации.
+     * Setting the date and time of registration.
      *
      * @param \DateTimeInterface $registrationDate
      *
@@ -201,7 +195,7 @@ class Patient
     }
 
     /**
-     * Получение больницы, к которой прикреплён пациент.
+     * Getting the hospital to which the patient is attached.
      *
      * @return Clinic
      */
@@ -211,7 +205,7 @@ class Patient
     }
 
     /**
-     * Установка больницы, к которой прикреплён пациент.
+     * Setting the hospital to which the patient is attached.
      *
      * @param Clinic $clinic
      *
@@ -225,7 +219,7 @@ class Patient
     }
 
     /**
-     * Получение даты рождения.
+     * Getting the date of birth.
      *
      * @return \DateTimeInterface|null
      */
@@ -235,7 +229,7 @@ class Patient
     }
 
     /**
-     * Установка даты рождения.
+     * Setting the date of birth.
      *
      * @param \DateTimeInterface|null $birthday
      *
@@ -249,7 +243,7 @@ class Patient
     }
 
     /**
-     * Получение количества мероприятий, в которых учавствовал пациент.
+     * Getting the number of events in which the patient participated.
      *
      * @return int
      */
@@ -259,7 +253,7 @@ class Patient
     }
 
     /**
-     * Установка количества мероприятий, в которых учавствовал пациент.
+     * Setting the number of events in which the patient participated.
      *
      * @param int $eventCount
      *
@@ -273,7 +267,7 @@ class Patient
     }
 
     /**
-     * Получение статуса на согласие публикации фотографий.
+     * Get the status of consent to publish photos.
      *
      * @return int|null
      */
@@ -283,7 +277,7 @@ class Patient
     }
 
     /**
-     * Установка статуса на согласие публикации фотографий.
+     * Set the status of consent to publish photos.
      *
      * @param int $consentToPublication
      *
@@ -297,7 +291,7 @@ class Patient
     }
 
     /**
-     * Пациент колясочник?
+     * Patient is wheelchair user?
      *
      * @return bool
      */
@@ -307,7 +301,7 @@ class Patient
     }
 
     /**
-     * Установка флага, определяющего пациента как колясочника.
+     * Setting a flag that identifies the patient as a wheelchair user.
      *
      * @param bool $wheelchairUser
      *

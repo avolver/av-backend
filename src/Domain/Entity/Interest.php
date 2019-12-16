@@ -24,14 +24,14 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность интереса пациентов.
+ * Patient interest entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\InterestRepository")
  */
 class Interest
 {
     /**
-     * Идентификатор.
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -40,21 +40,21 @@ class Interest
     private ?int $id = null;
 
     /**
-     * Название.
+     * Name.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $name;
 
     /**
-     * Интерес активен?
+     * Is interest active?
      *
      * @ORM\Column(type="boolean")
      */
     private bool $active = false;
 
     /**
-     * Конструктор.
+     * Constructor.
      *
      * @param string $name
      */
@@ -64,7 +64,7 @@ class Interest
     }
 
     /**
-     * Получение идентификатора.
+     * Get ID.
      *
      * @return int|null
      */
@@ -74,7 +74,7 @@ class Interest
     }
 
     /**
-     * Получение названия.
+     * Get name.
      *
      * @return string
      */
@@ -84,7 +84,7 @@ class Interest
     }
 
     /**
-     * Установка названия.
+     * Set name.
      *
      * @param string $name
      *
@@ -98,7 +98,7 @@ class Interest
     }
 
     /**
-     * Интерес активен?
+     * Is interest active?
      *
      * @return bool
      */
@@ -108,7 +108,7 @@ class Interest
     }
 
     /**
-     * Установка флага активности.
+     * Set activity flag.
      *
      * @param bool $active
      *

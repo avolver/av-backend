@@ -26,7 +26,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * Репозиторий типов мест, в которых проводятся мероприятия.
+ * Place type repository.
  *
  * @method PlaceType|null find($id, $lockMode = null, $lockVersion = null)
  * @method PlaceType|null findOneBy(array $criteria, array $orderBy = null)
@@ -36,7 +36,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 class PlaceTypeRepository extends ServiceEntityRepository
 {
     /**
-     * Конструктор.
+     * Repository constructor.
      *
      * @param ManagerRegistry $registry
      */

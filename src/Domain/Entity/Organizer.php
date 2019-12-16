@@ -24,13 +24,15 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность организатора мероприятия.
+ * Event organizer entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\OrganizerRepository")
  */
 class Organizer
 {
     /**
+     * Identifier.
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -38,21 +40,21 @@ class Organizer
     private ?int $id = null;
 
     /**
-     * Отображаемое имя организатора.
+     * Organizer display name.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $name;
 
     /**
-     * Контакты организатора.
+     * Organizer contacts.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $contacts;
 
     /**
-     * Получение ID.
+     * Get ID.
      *
      * @return int|null
      */
@@ -62,7 +64,7 @@ class Organizer
     }
 
     /**
-     * Получение имени.
+     * Get name.
      *
      * @return string
      */
@@ -72,7 +74,7 @@ class Organizer
     }
 
     /**
-     * Установка имени.
+     * Set name.
      *
      * @param string $name
      *
@@ -86,7 +88,7 @@ class Organizer
     }
 
     /**
-     * Получение контактов.
+     * Get contacts.
      *
      * @return string
      */
@@ -96,7 +98,7 @@ class Organizer
     }
 
     /**
-     * Установка контактов.
+     * Set contacts.
      *
      * @param string $contacts
      *

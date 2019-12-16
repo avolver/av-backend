@@ -26,7 +26,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * Репозиторий клиник.
+ * Clinics repository.
  *
  * @method Clinic|null find($id, $lockMode = null, $lockVersion = null)
  * @method Clinic|null findOneBy(array $criteria, array $orderBy = null)
@@ -36,9 +36,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 class ClinicRepository extends ServiceEntityRepository
 {
     /**
-     * Конструктор репозитория.
-     *
-     * ClinicRepository constructor.
+     * Repository constructor.
      *
      * @param ManagerRegistry $registry
      */

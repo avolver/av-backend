@@ -26,7 +26,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * Репозиторий мероприятий.
+ * Events repository.
  *
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
  * @method Event|null findOneBy(array $criteria, array $orderBy = null)
@@ -36,7 +36,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 class EventRepository extends ServiceEntityRepository
 {
     /**
-     * Конструктор.
+     * Repository constructor.
      *
      * @param ManagerRegistry $registry
      */

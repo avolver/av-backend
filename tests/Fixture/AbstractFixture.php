@@ -24,12 +24,12 @@ namespace Av\Tests\Fixture;
 use Doctrine\Bundle\FixturesBundle\Fixture as BaseFixture;
 
 /**
- * Абстрактная фикстура
+ * Abstract fixture.
  */
 abstract class AbstractFixture extends BaseFixture
 {
     /**
-     * Создать ссылку.
+     * Create reference link name.
      *
      * @param object|string $name
      * @param int           $id
@@ -42,7 +42,7 @@ abstract class AbstractFixture extends BaseFixture
     }
 
     /**
-     * Сохранить ссылку на объект.
+     * Save entity reference.
      *
      * @param object $object
      * @param int    $id
@@ -53,7 +53,7 @@ abstract class AbstractFixture extends BaseFixture
     }
 
     /**
-     * Загрузить объект по ссылке.
+     * Load entity reference.
      *
      * @param string $name
      * @param int    $id

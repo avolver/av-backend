@@ -32,7 +32,7 @@ use Symfony\Bundle\MakerBundle\MakerBundle;
 use Symfony\Bundle\MonologBundle\MonologBundle;
 
 /**
- * Набор необходимых бандлов
+ * Necessary bundles collection.
  */
 final class BundlesCollection
 {
@@ -53,7 +53,7 @@ final class BundlesCollection
     ];
 
     /**
-     * Получить все классы бандлов.
+     * Getter for all bundle FCQNs.
      *
      * @param string $env
      *
@@ -69,7 +69,7 @@ final class BundlesCollection
     }
 
     /**
-     * Создаёт объекты из массива с FCQN и йелдит их.
+     * Creates objects from an array with FCQNs and yields them.
      *
      * @param array $fcqns
      *

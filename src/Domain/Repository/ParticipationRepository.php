@@ -23,10 +23,10 @@ namespace Av\Domain\Repository;
 
 use Av\Domain\Entity\Participation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * Репозиторий прикреплений к мероприятям.
+ * Event participations repository.
  *
  * @method Participation|null find($id, $lockMode = null, $lockVersion = null)
  * @method Participation|null findOneBy(array $criteria, array $orderBy = null)
@@ -36,7 +36,7 @@ use Doctrine\Persistence\ManagerRegistry;
 class ParticipationRepository extends ServiceEntityRepository
 {
     /**
-     * Конструктор.
+     * Repository constructor.
      *
      * @param ManagerRegistry $registry
      */

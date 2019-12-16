@@ -25,7 +25,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Удаляем лишнее из контейнера
+ * Remove unnecessary services from the container.
  */
 class RemoveUnnecessaryPass implements CompilerPassInterface
 {
@@ -34,13 +34,13 @@ class RemoveUnnecessaryPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container): void
     {
-        // Проверять Request не нужно: TrustedProxies, trusted hosts
+        // Request does't need to be checked: TrustedProxies, trusted hosts
         $container->removeDefinition('validate_request_listener');
 
-        // Сессий у меня нет
+        // I have no sessions
         $container->removeDefinition('session_listener');
 
-        // Все экшны прописаны статически
+        // All actions are registered manually
         $container->removeDefinition('resolve_controller_name_subscriber');
     }
 }

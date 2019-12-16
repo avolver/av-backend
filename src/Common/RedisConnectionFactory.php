@@ -26,13 +26,14 @@ use Predis\Connection\PhpiredisStreamConnection;
 use Snc\RedisBundle\Client\Predis\Connection\ConnectionFactory as BaseConnectionFactory;
 
 /**
- * Фабрика redis-соединений, указывающее работать через расширение phpiredis
- * Реализовано для большей производительности
+ * Redis connection factory, indicating to work through the phpiredis extension.
+ *
+ * Implemented for greater performance.
  */
 final class RedisConnectionFactory extends BaseConnectionFactory
 {
     /**
-     * Конструктор.
+     * Constructor.
      */
     public function __construct()
     {

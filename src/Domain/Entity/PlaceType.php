@@ -24,14 +24,14 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность типа мест, в которых проводятся мероприятия.
+ * Event venue type entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\PlaceTypeRepository")
  */
 class PlaceType
 {
     /**
-     * Идентификатор.
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -40,14 +40,14 @@ class PlaceType
     private ?int $id = null;
 
     /**
-     * Название типа.
+     * Name.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $name;
 
     /**
-     * Получение идентификатора.
+     * Get ID.
      *
      * @return int|null
      */
@@ -57,7 +57,7 @@ class PlaceType
     }
 
     /**
-     * Получение названия типа.
+     * Get name.
      *
      * @return string|null
      */
@@ -67,7 +67,7 @@ class PlaceType
     }
 
     /**
-     * Установка названия типа.
+     * Set Name.
      *
      * @param string $name
      *

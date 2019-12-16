@@ -26,7 +26,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
 
 /**
- * Фикстура клиник.
+ * Clinic fixture.
  */
 final class ClinicFixture extends AbstractFixture
 {
@@ -37,7 +37,7 @@ final class ClinicFixture extends AbstractFixture
     {
         $faker = Faker\Factory::create('ru_RU');
 
-        // Создаём больницы
+        // Create clinics
         $baseClinic = new Clinic();
         for ($count = 1; $count <= 5; $count++) {
             $clinic = (clone $baseClinic)

@@ -24,14 +24,14 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность запроса пациентов из конкретной больницы на конкретное мероприятие.
+ * Entity of requesting patients from a specific clinic for a specific event.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\PatientRequestRepository")
  */
 class PatientRequest
 {
     /**
-     * Идентификатор запроса.
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -40,7 +40,7 @@ class PatientRequest
     private ?int $id = null;
 
     /**
-     * Больница.
+     * Clinic.
      *
      * @ORM\ManyToOne(targetEntity="Av\Domain\Entity\Clinic", inversedBy="patientRequests")
      * @ORM\JoinColumn(nullable=false)
@@ -48,7 +48,7 @@ class PatientRequest
     private Clinic $clinic;
 
     /**
-     * Мероприятие.
+     * Event.
      *
      * @ORM\ManyToOne(targetEntity="Av\Domain\Entity\Event", inversedBy="patientRequests")
      * @ORM\JoinColumn(nullable=false)
@@ -56,21 +56,21 @@ class PatientRequest
     private Event $event;
 
     /**
-     * Лимит квоты
+     * Quota limit.
      *
      * @ORM\Column(type="integer", nullable=true)
      */
     private ?int $quotaLimit = null;
 
     /**
-     * Количество посетителей.
+     * Visitors count.
      *
      * @ORM\Column(type="integer")
      */
     private int $visitorsCount = 0;
 
     /**
-     * Получение идентификатора.
+     * Get ID.
      *
      * @return int|null
      */
@@ -80,7 +80,7 @@ class PatientRequest
     }
 
     /**
-     * Получение больницы, в которую делается запрос.
+     * Getting the clinic to which the request is made.
      *
      * @return Clinic
      */
@@ -90,7 +90,7 @@ class PatientRequest
     }
 
     /**
-     * Установка больницы, в которую делается запрос.
+     * Setting the clinic to which the request is made.
      *
      * @param Clinic $clinic
      *
@@ -104,7 +104,7 @@ class PatientRequest
     }
 
     /**
-     * Получение мероприятия, на которое делается запрос.
+     * Get the requested event.
      *
      * @return Event
      */
@@ -114,7 +114,7 @@ class PatientRequest
     }
 
     /**
-     * Установка мероприятия, на которое делается запрос.
+     * Set the requested event.
      *
      * @param Event $event
      *
@@ -128,7 +128,7 @@ class PatientRequest
     }
 
     /**
-     * Получение лимита квоты запроса.
+     * Getting request quota limit.
      *
      * @return int|null
      */
@@ -138,7 +138,7 @@ class PatientRequest
     }
 
     /**
-     * Установка лимита квоты.
+     * Setting request quota limit.
      *
      * @param int|null $quotaLimit
      *
@@ -152,7 +152,7 @@ class PatientRequest
     }
 
     /**
-     * Получение количества посетителей в запросе.
+     * Getting the number of visitors in a request.
      *
      * @return int
      */
@@ -162,7 +162,7 @@ class PatientRequest
     }
 
     /**
-     * Установка количества посетителей в запросе.
+     * Setting the number of visitors in a request.
      *
      * @param int $visitorsCount
      *

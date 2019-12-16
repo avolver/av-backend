@@ -24,14 +24,14 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность направления волонтёрства.
+ * Entity of the unit of volunteering.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\UnitRepository")
  */
 class Unit
 {
     /**
-     * Идентификатор.
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -40,21 +40,21 @@ class Unit
     private ?int $id = null;
 
     /**
-     * Название.
+     * Name.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $name;
 
     /**
-     * Тип.
+     * Type.
      *
      * @ORM\Column(type="integer")
      */
     private int $type;
 
     /**
-     * Получение идентификатора.
+     * Get ID.
      *
      * @return int|null
      */
@@ -64,7 +64,7 @@ class Unit
     }
 
     /**
-     * Получение названия.
+     * Get name.
      *
      * @return string
      */
@@ -74,7 +74,7 @@ class Unit
     }
 
     /**
-     * Установка названия.
+     * Set name.
      *
      * @param string $name
      *
@@ -88,7 +88,7 @@ class Unit
     }
 
     /**
-     * Получение типа.
+     * Get type.
      *
      * @return int
      */
@@ -98,7 +98,7 @@ class Unit
     }
 
     /**
-     * Установка типа.
+     * Set type.
      *
      * @param int $type
      *

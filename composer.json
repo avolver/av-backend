@@ -2,7 +2,7 @@
     "name": "avolver/av-backend",
     "description": "Volunteers on cars: backend",
     "type": "project",
-    "license": "GPL-3.0",
+    "license": "AGPL",
     "require": {
         "php":                                 ">=7.4.0",
         "symfony/framework-bundle":            "5.0.1",

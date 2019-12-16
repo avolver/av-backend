@@ -26,7 +26,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * Репозиторий комментариев.
+ * Comments repository.
  *
  * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
  * @method Comment|null findOneBy(array $criteria, array $orderBy = null)
@@ -36,7 +36,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 class CommentRepository extends ServiceEntityRepository
 {
     /**
-     * Конструктор.
+     * Repository constructor.
      *
      * @param ManagerRegistry $registry
      */

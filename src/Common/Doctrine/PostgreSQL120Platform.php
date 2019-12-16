@@ -26,7 +26,7 @@ use Doctrine\DBAL\Schema\Index;
 use Doctrine\DBAL\Schema\Table;
 
 /**
- * Поддержка 12 версии PostgreSQL
+ * Doctrine support for PostgreSQL 12
  */
 class PostgreSQL120Platform extends PostgreSQL100Platform
 {

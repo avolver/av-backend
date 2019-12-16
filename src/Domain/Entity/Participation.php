@@ -24,18 +24,18 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Прикрепление к мероприятию.
+ * Event participation entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\ParticipationRepository")
  */
 class Participation
 {
-    // Типы транспорта
+    // Types of transport
     public const TRANSPORT_CAR = 1;
     public const TRANSPORT_BUS = 2;
 
     /**
-     * Идентификатор прикрепления.
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -44,28 +44,28 @@ class Participation
     private ?int $id = null;
 
     /**
-     * Тип транспорта.
+     * Transport type.
      *
      * @ORM\Column(type="integer")
      */
     private int $transportType = self::TRANSPORT_CAR;
 
     /**
-     * Количество прикреплённых участников.
+     * Number of members attached.
      *
      * @ORM\Column(type="integer")
      */
-    private int $personCount = 0;
+    private int $membersCount = 0;
 
     /**
-     * Участник отказался?
+     * The participant refused?
      *
      * @ORM\Column(type="boolean")
      */
     private bool $refused = false;
 
     /**
-     * Получение ID.
+     * Get ID.
      *
      * @return int|null
      */
@@ -75,7 +75,7 @@ class Participation
     }
 
     /**
-     * Получение типа транспорта.
+     * Get transport type.
      *
      * @return int
      */
@@ -85,7 +85,7 @@ class Participation
     }
 
     /**
-     * Установка типа транспорта.
+     * Set transport type.
      *
      * @param int $transportType
      *
@@ -99,31 +99,31 @@ class Participation
     }
 
     /**
-     * Получение количества прикреплённых участников.
+     * Get the number of members attached.
      *
      * @return int
      */
-    public function getPersonCount(): int
+    public function getMembersCount(): int
     {
-        return $this->personCount;
+        return $this->membersCount;
     }
 
     /**
-     * Установка количества прикреплённых участников.
+     * Set the number of members attached.
      *
-     * @param int $personCount
+     * @param int $membersCount
      *
      * @return $this
      */
-    public function setPersonCount(int $personCount): self
+    public function setMembersCount(int $membersCount): self
     {
-        $this->personCount = $personCount;
+        $this->membersCount = $membersCount;
 
         return $this;
     }
 
     /**
-     * Участник отказался?
+     * Is participant refused?
      *
      * @return bool
      */
@@ -133,7 +133,7 @@ class Participation
     }
 
     /**
-     * Установка флага, определяющего отказавшегося участника.
+     * Setting a flag identifying a refused participant.
      *
      * @param bool $refused
      *

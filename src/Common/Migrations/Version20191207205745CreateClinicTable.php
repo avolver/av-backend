@@ -25,7 +25,7 @@ use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
 /**
- * Создание таблицы клиник
+ * Creating a clinics table.
  */
 final class Version20191207205745CreateClinicTable extends AbstractMigration
 {
@@ -34,7 +34,7 @@ final class Version20191207205745CreateClinicTable extends AbstractMigration
      */
     public function getDescription(): string
     {
-        return 'Создание таблицы клиник';
+        return 'Creating a clinics table';
     }
 
     /**

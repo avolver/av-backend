@@ -26,14 +26,14 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность клиники
+ * Clinic entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\ClinicRepository")
  */
 class Clinic
 {
     /**
-     * Идентификатор
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -42,56 +42,56 @@ class Clinic
     private ?int $id = null;
 
     /**
-     * Адрес
+     * Address.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $address;
 
     /**
-     * Название
+     * Name.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $name;
 
     /**
-     * Индикатор карантина
+     * Quarantine indicator.
      *
      * @ORM\Column(type="boolean")
      */
     private bool $quarantine;
 
     /**
-     * Дата, до которой клиника на карантине
+     * Date before which the clinic is in quarantine.
      *
      * @ORM\Column(type="date", nullable=true)
      */
     private ?\DateTime $quarantineDate = null;
 
     /**
-     * Контактная информация
+     * Contact information.
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private ?string $contactInfo = null;
 
     /**
-     * Список пациентов.
+     * Patient list.
      *
      * @ORM\OneToMany(targetEntity="Av\Domain\Entity\Patient", mappedBy="clinic")
      */
     private Collection $patients;
 
     /**
-     * Запросы пациентов.
+     * Patient requests.
      *
      * @ORM\OneToMany(targetEntity="Av\Domain\Entity\PatientRequest", mappedBy="clinic")
      */
     private Collection $patientRequests;
 
     /**
-     * Конструктор клиники.
+     * Constructor.
      */
     public function __construct()
     {
@@ -101,7 +101,7 @@ class Clinic
     }
 
     /**
-     * Получение ID.
+     * Get ID.
      *
      * @return int|null
      */
@@ -111,7 +111,7 @@ class Clinic
     }
 
     /**
-     * Получение адреса клиники.
+     * Getting clinic address.
      *
      * @return string|null
      */
@@ -121,7 +121,7 @@ class Clinic
     }
 
     /**
-     * Установка адреса клиники.
+     * Setting the clinic address.
      *
      * @param string $address
      *
@@ -135,7 +135,7 @@ class Clinic
     }
 
     /**
-     * Получение названия клиники.
+     * Getting the name of the clinic.
      *
      * @return string|null
      */
@@ -145,7 +145,7 @@ class Clinic
     }
 
     /**
-     * Установка названия клиники.
+     * Setting the name of the clinic.
      *
      * @param string $name
      *
@@ -159,7 +159,7 @@ class Clinic
     }
 
     /**
-     * Возвращает true, если клиника на карантине.
+     * Returns true if the clinic is quarantined.
      *
      * @return bool
      */
@@ -169,7 +169,7 @@ class Clinic
     }
 
     /**
-     * Устанавливает флаг карантина
+     * Sets the quarantine flag.
      *
      * @param bool $inQuarantine
      *
@@ -183,7 +183,7 @@ class Clinic
     }
 
     /**
-     * Возвращает дату, до которой клиника на карантине
+     * Returns the date by which the clinic is in quarantine.
      *
      * @return \DateTimeInterface|null
      */
@@ -193,7 +193,7 @@ class Clinic
     }
 
     /**
-     * Установка даты карантина, до которой клиника на карантине
+     * Setting the quarantine date until which the clinic is in quarantine.
      *
      * @param \DateTimeInterface|null $quarantineDate
      *
@@ -207,7 +207,7 @@ class Clinic
     }
 
     /**
-     * Получение контактной информации клиники
+     * Getting clinic contact information.
      *
      * @return string|null
      */
@@ -217,7 +217,7 @@ class Clinic
     }
 
     /**
-     * Установка контактной информации клиники
+     * Setting clinic contact information.
      *
      * @param string|null $contactInfo
      *
@@ -231,7 +231,7 @@ class Clinic
     }
 
     /**
-     * Получение списка пациентов в больнице.
+     * Getting a list of patients in a clinic.
      *
      * @return Collection|Patient[]
      */
@@ -241,7 +241,7 @@ class Clinic
     }
 
     /**
-     * Добавление пациента в клинику.
+     * Adding a patient to the clinic.
      *
      * @param Patient $patient
      *
@@ -258,7 +258,7 @@ class Clinic
     }
 
     /**
-     * Удаление пациента и клиники.
+     * Removal of patient and clinic.
      *
      * @param Patient $patient
      *
@@ -277,7 +277,7 @@ class Clinic
     }
 
     /**
-     * Получение запросов пациентов в данной клинике.
+     * Receiving patient requests in this clinic.
      *
      * @return Collection|PatientRequest[]
      */
@@ -287,7 +287,7 @@ class Clinic
     }
 
     /**
-     * Добавление запросов пациентов.
+     * Adding patient requests.
      *
      * @param PatientRequest $patientRequest
      *
@@ -304,7 +304,7 @@ class Clinic
     }
 
     /**
-     * Удаление запросов пациентов.
+     * Removing patient requests.
      *
      * @param PatientRequest $patientRequest
      *

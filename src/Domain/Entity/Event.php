@@ -26,25 +26,19 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность мероприятия.
+ * Event entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\EventRepository")
  */
 class Event
 {
-    // Статусы мероприятия:
-
-    // Открытое
-    public const STATUS_OPEN = 1;
-
-    // Закрытое
+    // Event statuses:
+    public const STATUS_OPEN   = 1;
     public const STATUS_CLOSED = 2;
-
-    // Прошедшее
-    public const STATUS_PAST = 3;
+    public const STATUS_PAST   = 3;
 
     /**
-     * Идентификатор.
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -53,105 +47,105 @@ class Event
     private ?int $id = null;
 
     /**
-     * Дата и время начала.
+     * Start date and time.
      *
      * @ORM\Column(type="datetime")
      */
     private \DateTimeInterface $beginDateTime;
 
     /**
-     * Дата и время окончания.
+     * End date and time.
      *
      * @ORM\Column(type="datetime")
      */
     private \DateTimeInterface $endDateTime;
 
     /**
-     * Адрес.
+     * Address.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $address;
 
     /**
-     * Название.
+     * Name.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $name;
 
     /**
-     * Общее количество участников.
+     * Total number of participants.
      *
      * @ORM\Column(type="integer")
      */
     private int $participantsTotal = 0;
 
     /**
-     * Статус.
+     * Status.
      *
      * @ORM\Column(type="integer")
      */
     private int $status;
 
     /**
-     * Описание маршрута.
+     * Route description.
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private ?string $routeDescription = null;
 
     /**
-     * Ссылки на фотографии и другие файлы.
+     * Links to photos and other files.
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private ?string $links = null;
 
     /**
-     * Доступно колясочникам?
+     * Wheelchair accessible?
      *
      * @ORM\Column(type="boolean")
      */
     private bool $wheelchairUser = false;
 
     /**
-     * Необходимы документы.
+     * Documents required.
      *
      * @ORM\Column(type="boolean")
      */
     private bool $needDocuments = false;
 
     /**
-     * Возрастные ограничения.
+     * Age restrictions.
      *
      * @ORM\Column(type="integer")
      */
     private int $ageRestrictions;
 
     /**
-     * Время отправления транспорта.
+     * Departure time.
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
     private ?\DateTimeInterface $transportStartTime = null;
 
     /**
-     * Время встречи транспорта.
+     * Transport meeting time.
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
     private ?\DateTimeInterface $transportFinishTime = null;
 
     /**
-     * Запросы пациентов.
+     * Patient requests.
      *
      * @ORM\OneToMany(targetEntity="Av\Domain\Entity\PatientRequest", mappedBy="event", orphanRemoval=true)
      */
     private Collection $patientRequests;
 
     /**
-     * Конструктор.
+     * Constructor.
      */
     public function __construct()
     {
@@ -159,7 +153,7 @@ class Event
     }
 
     /**
-     * Получение ID.
+     * Getting ID.
      *
      * @return int|null
      */
@@ -169,7 +163,7 @@ class Event
     }
 
     /**
-     * Получение даты и времени начала.
+     * Getting start date and time.
      *
      * @return \DateTimeInterface
      */
@@ -179,7 +173,7 @@ class Event
     }
 
     /**
-     * Установка даты и времени начала.
+     * Set start date and time.
      *
      * @param \DateTimeInterface $beginDateTime
      *
@@ -193,7 +187,7 @@ class Event
     }
 
     /**
-     * Получение даты и времени окончания.
+     * Getting end date and time.
      *
      * @return \DateTimeInterface
      */
@@ -203,7 +197,7 @@ class Event
     }
 
     /**
-     * Установка даты и времени окончания.
+     * Set end date and time.
      *
      * @param \DateTimeInterface $endDateTime
      *
@@ -217,7 +211,7 @@ class Event
     }
 
     /**
-     * Получение адреса.
+     * Getting address.
      *
      * @return string
      */
@@ -227,7 +221,7 @@ class Event
     }
 
     /**
-     * Установка адреса.
+     * Set address.
      *
      * @param string $address
      *
@@ -241,7 +235,7 @@ class Event
     }
 
     /**
-     * Получение названия.
+     * Getting the name.
      *
      * @return string
      */
@@ -251,7 +245,7 @@ class Event
     }
 
     /**
-     * Установка названия.
+     * Name setting.
      *
      * @param string $name
      *
@@ -265,7 +259,7 @@ class Event
     }
 
     /**
-     * Получение общего количества участников.
+     * Getting the total number of participants.
      *
      * @return int
      */
@@ -275,7 +269,7 @@ class Event
     }
 
     /**
-     * Установка общего количества участников.
+     * Setting the total number of participants.
      *
      * @param int $participantsTotal
      *
@@ -289,7 +283,7 @@ class Event
     }
 
     /**
-     * Получение статуса.
+     * Getting status.
      *
      * @return int
      */
@@ -299,7 +293,7 @@ class Event
     }
 
     /**
-     * Установка статуса.
+     * Setting status.
      *
      * @param int $status
      *
@@ -313,7 +307,7 @@ class Event
     }
 
     /**
-     * Получение описания маршрута.
+     * Getting route description.
      *
      * @return string|null
      */
@@ -323,7 +317,7 @@ class Event
     }
 
     /**
-     * Установка описания маршрута.
+     * Setting a route description.
      *
      * @param string|null $routeDescription
      *
@@ -337,7 +331,7 @@ class Event
     }
 
     /**
-     * Получение ссылок на фотографии и другие файлы.
+     * Getting links to photos and other files.
      *
      * @return string|null
      */
@@ -347,7 +341,7 @@ class Event
     }
 
     /**
-     * Установка ссылок на фотографии и другие файлы.
+     * Setting links to photos and other files.
      *
      * @param string|null $links
      *
@@ -361,7 +355,7 @@ class Event
     }
 
     /**
-     * Получение флага доступности колясочникам.
+     * Getting the wheelchair access flag.
      *
      * @return bool
      */
@@ -371,7 +365,7 @@ class Event
     }
 
     /**
-     * Установка флага доступности колясочникам.
+     * Setting the wheelchair access flag.
      *
      * @param bool $wheelchairUser
      *
@@ -385,7 +379,7 @@ class Event
     }
 
     /**
-     * Получение флага необходимости документов.
+     * Getting the flag of the need for documents.
      *
      * @return bool
      */
@@ -395,7 +389,7 @@ class Event
     }
 
     /**
-     * Установка флага необходимости документов.
+     * Setting the flag of the need for documents.
      *
      * @param bool $needDocuments
      *
@@ -409,7 +403,7 @@ class Event
     }
 
     /**
-     * Получение статуса о возрастных ограничениях.
+     * Getting age restrictions status.
      *
      * @return int
      */
@@ -419,7 +413,7 @@ class Event
     }
 
     /**
-     * Установка статуса о возрастных ограничениях.
+     * Setting age restrictions status.
      *
      * @param int $ageRestrictions
      *
@@ -433,7 +427,7 @@ class Event
     }
 
     /**
-     * Получение времени отправления транспорта.
+     * Getting the time of departure of transport.
      *
      * @return \DateTimeInterface|null
      */
@@ -443,7 +437,7 @@ class Event
     }
 
     /**
-     * Установка времени отправления транспорта.
+     * Setting the time of departure of transport.
      *
      * @param \DateTimeInterface|null $transportStartTime
      *
@@ -457,7 +451,7 @@ class Event
     }
 
     /**
-     * Получение времени встречи транспорта.
+     * Getting transport meeting times.
      *
      * @return \DateTimeInterface|null
      */
@@ -467,7 +461,7 @@ class Event
     }
 
     /**
-     * Установка времени встречи транспорта
+     * Setting transport meeting time
      *
      * @param \DateTimeInterface|null $transportFinishTime
      *
@@ -481,7 +475,7 @@ class Event
     }
 
     /**
-     * Получение запросов пациентов в данной клинике
+     * Getting patient requests in this clinic.
      *
      * @return Collection|PatientRequest[]
      */
@@ -491,7 +485,7 @@ class Event
     }
 
     /**
-     * Добавление запросов пациентов.
+     * Adding patient requests.
      *
      * @param PatientRequest $patientRequest
      *
@@ -508,7 +502,7 @@ class Event
     }
 
     /**
-     * Удаление запросов пациентов.
+     * Removing patient requests.
      *
      * @param PatientRequest $patientRequest
      *

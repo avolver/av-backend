@@ -1,5 +1,6 @@
-## Автоволонтеры: серверный модуль
+## Auto-Volunteers: backend service
 ---
 
-API для сервиса координации автоволонтёров.
+"Auto-Volunteers" is a volunteer coordination system. This repository contains API service part.
+
 

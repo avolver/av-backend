@@ -24,12 +24,12 @@ namespace Av\Action;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Корневая страница сервиса, отображающая заглушку
+ * The index endpoint of the service, returning the stub
  */
 class IndexAction
 {
     /**
-     * Возврат ответа-пустышки
+     * Return stub response.
      *
      * @return Response
      */

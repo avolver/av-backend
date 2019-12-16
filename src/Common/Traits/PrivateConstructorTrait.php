@@ -22,12 +22,12 @@ declare(strict_types = 1);
 namespace Av\Common\Traits;
 
 /**
- * Приватный конструктор для классов, объекты которых не стоит создавать.
+ * Private constructor for classes whose objects should not be instantiated.
  */
 trait PrivateConstructorTrait
 {
     /**
-     * См. описание класса.
+     * See class description.
      */
     private function __construct()
     {

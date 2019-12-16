@@ -24,19 +24,19 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность комментария
+ * Comment entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\CommentRepository")
  */
 class Comment
 {
-    // Приоритеты комментария.
+    // Comment priorities.
     public const PRIORITY_LOW    = 1;
     public const PRIORITY_NORMAL = 2;
     public const PRIORITY_HIGH   = 3;
 
     /**
-     * Идентификатор.
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -45,28 +45,28 @@ class Comment
     private ?int $id = null;
 
     /**
-     * Дата и время.
+     * Date and time.
      *
      * @ORM\Column(type="datetime")
      */
     private \DateTimeInterface $datetime;
 
     /**
-     * Текст.
+     * Text.
      *
      * @ORM\Column(type="text")
      */
     private string $text;
 
     /**
-     * Приоритет.
+     * Priority.
      *
      * @ORM\Column(type="integer")
      */
     private int $priority;
 
     /**
-     * Конструктор.
+     * Constructor.
      */
     public function __construct()
     {
@@ -74,7 +74,7 @@ class Comment
     }
 
     /**
-     * Получение ID.
+     * Getting ID.
      *
      * @return int|null
      */
@@ -84,7 +84,7 @@ class Comment
     }
 
     /**
-     * Получение даты и времени комментария.
+     * Getting the date and time of the comment.
      *
      * @return \DateTimeInterface
      */
@@ -94,7 +94,7 @@ class Comment
     }
 
     /**
-     * Установка даты и времени комментария.
+     * Setting the date and time of the comment.
      *
      * @param \DateTimeInterface $datetime
      *
@@ -108,7 +108,7 @@ class Comment
     }
 
     /**
-     * Получение текста комментария.
+     * Retrieving comment text.
      *
      * @return string
      */
@@ -118,7 +118,7 @@ class Comment
     }
 
     /**
-     * Установка текста комментария.
+     * Setting comment text.
      *
      * @param string $text
      *
@@ -132,7 +132,7 @@ class Comment
     }
 
     /**
-     * Получение приоритета комментария.
+     * Getting comment priority.
      *
      * @return int
      */
@@ -142,7 +142,7 @@ class Comment
     }
 
     /**
-     * Установка приоритета комментария.
+     * Set comment priority.
      *
      * @param int $priority
      *

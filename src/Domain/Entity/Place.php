@@ -24,14 +24,14 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Сущность места, где проводится мероприятие.
+ * Event venue entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\PlaceRepository")
  */
 class Place
 {
     /**
-     * Идентификатор.
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -40,21 +40,21 @@ class Place
     private ?int $id = null;
 
     /**
-     * Название места.
+     * Place name.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $name;
 
     /**
-     * Адрес места.
+     * Place address.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $address;
 
     /**
-     * Получение идентификатора.
+     * Get ID.
      *
      * @return int|null
      */
@@ -64,7 +64,7 @@ class Place
     }
 
     /**
-     * Получение имени.
+     * Get name.
      *
      * @return string|null
      */
@@ -74,7 +74,7 @@ class Place
     }
 
     /**
-     * Установка имени.
+     * Set name.
      *
      * @param string $name
      *
@@ -88,7 +88,7 @@ class Place
     }
 
     /**
-     * Получение адреса.
+     * Get address.
      *
      * @return string|null
      */
@@ -98,7 +98,7 @@ class Place
     }
 
     /**
-     * Установка адреса.
+     * Set address.
      *
      * @param string $address
      *

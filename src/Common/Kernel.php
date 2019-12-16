@@ -27,7 +27,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 
 /**
- * Symfony ядро
+ * Symfony kernel
  */
 class Kernel extends BaseKernel
 {
@@ -47,14 +47,10 @@ class Kernel extends BaseKernel
         $confDir = $this->getProjectDir() . '/cfg';
         $loader->load(\sprintf('%s/config_%s.yml', $confDir, $this->environment));
         $loader->load(\sprintf('%s/services.yml', $confDir));
-    }
 
-    /**
-     * @inheritdoc
-     */
-    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
-    {
-        $container->setParameter('container.dumper.inline_class_loader', true);
+        $loader->load(static function (ContainerBuilder $container) {
+            $container->setParameter('container.dumper.inline_class_loader', true);
+        });
     }
 
     /**

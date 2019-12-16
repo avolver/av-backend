@@ -24,12 +24,14 @@ namespace Av\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * User entity.
+ *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\UserRepository")
  */
 class User
 {
     /**
-     * Идентификатор.
+     * Identifier.
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -38,70 +40,70 @@ class User
     private ?int $id = null;
 
     /**
-     * Email для входа в аккаунт.
+     * Email to login.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $primaryEmail;
 
     /**
-     * Отображаемое имя.
+     * Display name.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $screenName;
 
     /**
-     * Рейтинг пользователя.
+     * User rating.
      *
      * @ORM\Column(type="integer")
      */
     private int $rank = 0;
 
     /**
-     * Список дополнительных email адресов.
+     * List of additional email addresses.
      *
      * @ORM\Column(type="array")
      */
     private array $emails = [];
 
     /**
-     * Номер телефона.
+     * Phone number.
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private ?string $phone = null;
 
     /**
-     * Пользователь активен?
+     * User is active?
      *
      * @ORM\Column(type="boolean")
      */
     private bool $enabled = false;
 
     /**
-     * Хеш пароля.
+     * Password hash.
      *
      * @ORM\Column(type="string", length=255)
      */
     private string $password;
 
     /**
-     * Дата последнего входа.
+     * Last login date.
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
     private ?\DateTimeInterface $lastLogin = null;
 
     /**
-     * Роли пользователя.
+     * User roles.
      *
      * @ORM\Column(type="array")
      */
     private array $roles = [];
 
     /**
-     * Получение ID.
+     * Get ID.
      *
      * @return int|null
      */
@@ -111,7 +113,7 @@ class User
     }
 
     /**
-     * Получение email адреса для входа в аккаунт.
+     * Get an email primary address.
      *
      * @return string
      */
@@ -121,7 +123,7 @@ class User
     }
 
     /**
-     * Установка email для входа в аккаунта.
+     * Set an primary email address.
      *
      * @param string $primaryEmail
      *
@@ -135,7 +137,7 @@ class User
     }
 
     /**
-     * Получение отображаемого имени.
+     * Get display name.
      *
      * @return string
      */
@@ -145,7 +147,7 @@ class User
     }
 
     /**
-     * Установка отображаемого имени.
+     * Set display name.
      *
      * @param string $screenName
      *
@@ -159,7 +161,7 @@ class User
     }
 
     /**
-     * Получение рейтинга пользователя.
+     * Get a user rating.
      *
      * @return int
      */
@@ -169,7 +171,7 @@ class User
     }
 
     /**
-     * Установка рейтинга пользователя.
+     * Set user rating.
      *
      * @param int $rank
      *
@@ -183,7 +185,7 @@ class User
     }
 
     /**
-     * Получение списка дополнительных email-адресов.
+     * Get a list of additional email addresses.
      *
      * @return array
      */
@@ -193,7 +195,7 @@ class User
     }
 
     /**
-     * Установка дополнительные email-адресов.
+     * Set additional email addresses.
      *
      * @param array $emails
      *
@@ -207,7 +209,7 @@ class User
     }
 
     /**
-     * Получение номера телефона.
+     * Get phone number.
      *
      * @return string|null
      */
@@ -217,7 +219,7 @@ class User
     }
 
     /**
-     * Установка номера телефона.
+     * Set phone number.
      *
      * @param string $phone
      *
@@ -231,7 +233,7 @@ class User
     }
 
     /**
-     * Возвращает флаг активности пользователя.
+     * Returns user activity flag.
      *
      * @return bool
      */
@@ -241,7 +243,7 @@ class User
     }
 
     /**
-     * Установка флага активности пользователя.
+     * Set user activity flag.
      *
      * @param bool $enabled
      *
@@ -255,7 +257,7 @@ class User
     }
 
     /**
-     * Получение хеша пароля.
+     * Get password hash.
      *
      * @return string
      */
@@ -265,7 +267,7 @@ class User
     }
 
     /**
-     * Установка хеша пароля.
+     * Set password hash.
      *
      * @param string $password
      *
@@ -279,7 +281,7 @@ class User
     }
 
     /**
-     * Получение даты и времени последнего входа.
+     * Get the date and time of the last login.
      *
      * @return \DateTimeInterface|null
      */
@@ -289,7 +291,7 @@ class User
     }
 
     /**
-     * Установка даты и времени последнего входа.
+     * Set date and time of last login.
      *
      * @param \DateTimeInterface $lastLogin
      *
@@ -303,7 +305,7 @@ class User
     }
 
     /**
-     * Получение списка ролей.
+     * Get a role list.
      *
      * @return array
      */
@@ -313,7 +315,7 @@ class User
     }
 
     /**
-     * Установка списка ролей.
+     * Set role list.
      *
      * @param array $roles
      *
