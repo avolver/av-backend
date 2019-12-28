@@ -22,14 +22,25 @@ declare(strict_types = 1);
 namespace Av\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SixDreams\RichModel\Traits\RichModelTrait;
 
 /**
  * Event participation entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\ParticipationRepository")
+ *
+ * @method int|null getId()
+ *
+ * @method int getTransportType()
+ * @method Participation setTransportType(int $transportType)
+ *
+ * @method int getMembersCount()
+ * @method Participation setMembersCount(int $membersCount)
  */
 class Participation
 {
+    use RichModelTrait;
+
     // Types of transport
     public const TRANSPORT_CAR = 1;
     public const TRANSPORT_BUS = 2;
@@ -63,64 +74,6 @@ class Participation
      * @ORM\Column(type="boolean")
      */
     private bool $refused = false;
-
-    /**
-     * Get ID.
-     *
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get transport type.
-     *
-     * @return int
-     */
-    public function getTransportType(): int
-    {
-        return $this->transportType;
-    }
-
-    /**
-     * Set transport type.
-     *
-     * @param int $transportType
-     *
-     * @return $this
-     */
-    public function setTransportType(int $transportType): self
-    {
-        $this->transportType = $transportType;
-
-        return $this;
-    }
-
-    /**
-     * Get the number of members attached.
-     *
-     * @return int
-     */
-    public function getMembersCount(): int
-    {
-        return $this->membersCount;
-    }
-
-    /**
-     * Set the number of members attached.
-     *
-     * @param int $membersCount
-     *
-     * @return $this
-     */
-    public function setMembersCount(int $membersCount): self
-    {
-        $this->membersCount = $membersCount;
-
-        return $this;
-    }
 
     /**
      * Is participant refused?

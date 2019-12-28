@@ -5,22 +5,23 @@
     "license": "AGPL",
     "require": {
         "php":                                 ">=7.4.0",
-        "symfony/framework-bundle":            "5.0.1",
+        "symfony/framework-bundle":            "5.0.2",
         "symfony/monolog-bundle":              "3.5.0",
-        "doctrine/doctrine-bundle":            "2.0.2",
+        "doctrine/doctrine-bundle":            "2.0.6",
         "doctrine/orm":                        "2.7.0",
         "doctrine/doctrine-migrations-bundle": "2.1.2",
         "doctrine/doctrine-fixtures-bundle":   "3.3.0",
         "snc/redis-bundle":                    "3.2.1",
         "predis/predis":                       "1.1.1",
-        "k911/swoole-bundle":                  "0.7.4"
+        "k911/swoole-bundle":                  "0.7.5",
+        "6dreams/rich-model-trait":            "0.6.5"
     },
     "require-dev": {
-        "symfony/debug-bundle":         "5.0.1",
+        "symfony/debug-bundle":         "5.0.2",
         "symfony/maker-bundle":         "1.14.3",
         "fzaninotto/faker":             "1.9.1",
         "roave/security-advisories":    "dev-master",
-        "phpunit/phpunit":              "8.5.0",
+        "phpunit/phpunit":              "8.5.1",
         "pyrech/composer-changelogs":   "1.7.0",
         "sllh/composer-versions-check": "2.0.3"
     },

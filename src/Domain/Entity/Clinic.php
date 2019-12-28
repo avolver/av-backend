@@ -24,14 +24,34 @@ namespace Av\Domain\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use SixDreams\RichModel\Traits\RichModelTrait;
 
 /**
  * Clinic entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\ClinicRepository")
+ *
+ * @method int|null getId()
+ *
+ * @method string getAddress()
+ * @method Clinic setAddress(string $address)
+ *
+ * @method string getName()
+ * @method Clinic setName(string $name)
+ *
+ * @method \DateTimeInterface|null getQuarantineDate()
+ * @method Clinic setQuarantineDate(?\DateTimeInterface $date)
+ *
+ * @method string|null getContactInfo()
+ * @method Clinic setContactInfo(string $contactInfo)
+ *
+ * @method Collection|Patient[] getPatients()
+ * @method Collection|PatientRequest[] getPatientRequests()
  */
 class Clinic
 {
+    use RichModelTrait;
+
     /**
      * Identifier.
      *
@@ -39,56 +59,56 @@ class Clinic
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private ?int $id = null;
+    protected ?int $id = null;
 
     /**
      * Address.
      *
      * @ORM\Column(type="string", length=255)
      */
-    private string $address;
+    protected string $address;
 
     /**
      * Name.
      *
      * @ORM\Column(type="string", length=255)
      */
-    private string $name;
+    protected string $name;
 
     /**
      * Quarantine indicator.
      *
      * @ORM\Column(type="boolean")
      */
-    private bool $quarantine;
+    protected bool $quarantine;
 
     /**
      * Date before which the clinic is in quarantine.
      *
      * @ORM\Column(type="date", nullable=true)
      */
-    private ?\DateTime $quarantineDate = null;
+    protected ?\DateTime $quarantineDate = null;
 
     /**
      * Contact information.
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private ?string $contactInfo = null;
+    protected ?string $contactInfo = null;
 
     /**
      * Patient list.
      *
      * @ORM\OneToMany(targetEntity="Av\Domain\Entity\Patient", mappedBy="clinic")
      */
-    private Collection $patients;
+    protected Collection $patients;
 
     /**
      * Patient requests.
      *
      * @ORM\OneToMany(targetEntity="Av\Domain\Entity\PatientRequest", mappedBy="clinic")
      */
-    private Collection $patientRequests;
+    protected Collection $patientRequests;
 
     /**
      * Constructor.
@@ -98,64 +118,6 @@ class Clinic
         $this->quarantine      = false;
         $this->patients        = new ArrayCollection();
         $this->patientRequests = new ArrayCollection();
-    }
-
-    /**
-     * Get ID.
-     *
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * Getting clinic address.
-     *
-     * @return string|null
-     */
-    public function getAddress(): ?string
-    {
-        return $this->address;
-    }
-
-    /**
-     * Setting the clinic address.
-     *
-     * @param string $address
-     *
-     * @return $this
-     */
-    public function setAddress(string $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Getting the name of the clinic.
-     *
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Setting the name of the clinic.
-     *
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     /**
@@ -180,64 +142,6 @@ class Clinic
         $this->quarantine = $inQuarantine;
 
         return $this;
-    }
-
-    /**
-     * Returns the date by which the clinic is in quarantine.
-     *
-     * @return \DateTimeInterface|null
-     */
-    public function getQuarantineDate(): ?\DateTimeInterface
-    {
-        return $this->quarantineDate;
-    }
-
-    /**
-     * Setting the quarantine date until which the clinic is in quarantine.
-     *
-     * @param \DateTimeInterface|null $quarantineDate
-     *
-     * @return $this
-     */
-    public function setQuarantineDate(?\DateTimeInterface $quarantineDate): self
-    {
-        $this->quarantineDate = $quarantineDate;
-
-        return $this;
-    }
-
-    /**
-     * Getting clinic contact information.
-     *
-     * @return string|null
-     */
-    public function getContactInfo(): ?string
-    {
-        return $this->contactInfo;
-    }
-
-    /**
-     * Setting clinic contact information.
-     *
-     * @param string|null $contactInfo
-     *
-     * @return $this
-     */
-    public function setContactInfo(?string $contactInfo): self
-    {
-        $this->contactInfo = $contactInfo;
-
-        return $this;
-    }
-
-    /**
-     * Getting a list of patients in a clinic.
-     *
-     * @return Collection|Patient[]
-     */
-    public function getPatients(): Collection
-    {
-        return $this->patients;
     }
 
     /**
@@ -274,16 +178,6 @@ class Clinic
         }
 
         return $this;
-    }
-
-    /**
-     * Receiving patient requests in this clinic.
-     *
-     * @return Collection|PatientRequest[]
-     */
-    public function getPatientRequests(): Collection
-    {
-        return $this->patientRequests;
     }
 
     /**

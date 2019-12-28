@@ -22,14 +22,31 @@ declare(strict_types = 1);
 namespace Av\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SixDreams\RichModel\Traits\RichModelTrait;
 
 /**
  * Entity of requesting patients from a specific clinic for a specific event.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\PatientRequestRepository")
+ *
+ * @method int|null getId()
+ *
+ * @method Clinic getClinic()
+ * @method Clinic setClinic(Clinic $clinic)
+ *
+ * @method Event getEvent()
+ * @method Patient setEvent(Event $event)
+ *
+ * @method int|null getQuotaLimit()
+ * @method PatientRequest setQuotaLimit(?int $quotaLimit)
+ *
+ * @method int getVisitorsCount()
+ * @method PatientRequest setVisitorsCount(int $visitorsCount)
  */
 class PatientRequest
 {
+    use RichModelTrait;
+
     /**
      * Identifier.
      *
@@ -68,110 +85,4 @@ class PatientRequest
      * @ORM\Column(type="integer")
      */
     private int $visitorsCount = 0;
-
-    /**
-     * Get ID.
-     *
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * Getting the clinic to which the request is made.
-     *
-     * @return Clinic
-     */
-    public function getClinic(): Clinic
-    {
-        return $this->clinic;
-    }
-
-    /**
-     * Setting the clinic to which the request is made.
-     *
-     * @param Clinic $clinic
-     *
-     * @return $this
-     */
-    public function setClinic(Clinic $clinic): self
-    {
-        $this->clinic = $clinic;
-
-        return $this;
-    }
-
-    /**
-     * Get the requested event.
-     *
-     * @return Event
-     */
-    public function getEvent(): Event
-    {
-        return $this->event;
-    }
-
-    /**
-     * Set the requested event.
-     *
-     * @param Event $event
-     *
-     * @return $this
-     */
-    public function setEvent(Event $event): self
-    {
-        $this->event = $event;
-
-        return $this;
-    }
-
-    /**
-     * Getting request quota limit.
-     *
-     * @return int|null
-     */
-    public function getQuotaLimit(): ?int
-    {
-        return $this->quotaLimit;
-    }
-
-    /**
-     * Setting request quota limit.
-     *
-     * @param int|null $quotaLimit
-     *
-     * @return $this
-     */
-    public function setQuotaLimit(?int $quotaLimit): self
-    {
-        $this->quotaLimit = $quotaLimit;
-
-        return $this;
-    }
-
-    /**
-     * Getting the number of visitors in a request.
-     *
-     * @return int
-     */
-    public function getVisitorsCount(): int
-    {
-        return $this->visitorsCount;
-    }
-
-    /**
-     * Setting the number of visitors in a request.
-     *
-     * @param int $visitorsCount
-     *
-     * @return $this
-     */
-    public function setVisitorsCount(int $visitorsCount): self
-    {
-        $this->visitorsCount = $visitorsCount;
-
-        return $this;
-    }
 }

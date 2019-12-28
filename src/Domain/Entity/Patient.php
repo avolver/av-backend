@@ -22,14 +22,43 @@ declare(strict_types = 1);
 namespace Av\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SixDreams\RichModel\Traits\RichModelTrait;
 
 /**
  * Patient entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\PatientRepository")
+ *
+ * @method int|null getId()
+ *
+ * @method string getName()
+ * @method Patient setName(string $name)
+ *
+ * @method int getStatus()
+ * @method Patient setStatus(int $status)
+ *
+ * @method \DateTimeInterface getRegistrationDate()
+ * @method Patient setRegistrationDate(\DateTimeInterface $registrationDate)
+ *
+ * @method Clinic getClinic()
+ * @method Patient setClinic(Clinic $clinic)
+ *
+ * @method \DateTimeInterface|null getBirthday()
+ * @method Patient setBirthday(?\DateTimeInterface $birthday)
+ *
+ * @method int getEventCount()
+ * @method Patient setEventCount(int $eventCount)
+ *
+ * @method int getConsentToPublication()
+ * @method Patient setConsentToPublication(int $consentToPublication)
+ *
+ * @method bool getWheelchairUser()
+ * @method Patient setWheelchairUser(bool $wheelchairUser)
  */
 class Patient
 {
+    use RichModelTrait;
+
     //
     // Patient status
     //
@@ -111,206 +140,4 @@ class Patient
      * @ORM\Column(type="boolean")
      */
     private bool $wheelchairUser = false;
-
-    /**
-     * Get ID.
-     *
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get full name.
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set full name.
-     *
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get status.
-     *
-     * @return int
-     */
-    public function getStatus(): int
-    {
-        return $this->status;
-    }
-
-    /**
-     * Set status.
-     *
-     * @param int $status
-     *
-     * @return $this
-     */
-    public function setStatus(int $status): self
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Getting the date and time of registration.
-     *
-     * @return \DateTimeInterface
-     */
-    public function getRegistrationDate(): \DateTimeInterface
-    {
-        return $this->registrationDate;
-    }
-
-    /**
-     * Setting the date and time of registration.
-     *
-     * @param \DateTimeInterface $registrationDate
-     *
-     * @return $this
-     */
-    public function setRegistrationDate(\DateTimeInterface $registrationDate): self
-    {
-        $this->registrationDate = $registrationDate;
-
-        return $this;
-    }
-
-    /**
-     * Getting the hospital to which the patient is attached.
-     *
-     * @return Clinic
-     */
-    public function getClinic(): Clinic
-    {
-        return $this->clinic;
-    }
-
-    /**
-     * Setting the hospital to which the patient is attached.
-     *
-     * @param Clinic $clinic
-     *
-     * @return $this
-     */
-    public function setClinic(Clinic $clinic): self
-    {
-        $this->clinic = $clinic;
-
-        return $this;
-    }
-
-    /**
-     * Getting the date of birth.
-     *
-     * @return \DateTimeInterface|null
-     */
-    public function getBirthday(): ?\DateTimeInterface
-    {
-        return $this->birthday;
-    }
-
-    /**
-     * Setting the date of birth.
-     *
-     * @param \DateTimeInterface|null $birthday
-     *
-     * @return $this
-     */
-    public function setBirthday(?\DateTimeInterface $birthday): self
-    {
-        $this->birthday = $birthday;
-
-        return $this;
-    }
-
-    /**
-     * Getting the number of events in which the patient participated.
-     *
-     * @return int
-     */
-    public function getEventCount(): int
-    {
-        return $this->eventCount;
-    }
-
-    /**
-     * Setting the number of events in which the patient participated.
-     *
-     * @param int $eventCount
-     *
-     * @return $this
-     */
-    public function setEventCount(int $eventCount): self
-    {
-        $this->eventCount = $eventCount;
-
-        return $this;
-    }
-
-    /**
-     * Get the status of consent to publish photos.
-     *
-     * @return int|null
-     */
-    public function getConsentToPublication(): ?int
-    {
-        return $this->consentToPublication;
-    }
-
-    /**
-     * Set the status of consent to publish photos.
-     *
-     * @param int $consentToPublication
-     *
-     * @return $this
-     */
-    public function setConsentToPublication(int $consentToPublication): self
-    {
-        $this->consentToPublication = $consentToPublication;
-
-        return $this;
-    }
-
-    /**
-     * Patient is wheelchair user?
-     *
-     * @return bool
-     */
-    public function getWheelchairUser(): bool
-    {
-        return $this->wheelchairUser;
-    }
-
-    /**
-     * Setting a flag that identifies the patient as a wheelchair user.
-     *
-     * @param bool $wheelchairUser
-     *
-     * @return $this
-     */
-    public function setWheelchairUser(bool $wheelchairUser): self
-    {
-        $this->wheelchairUser = $wheelchairUser;
-
-        return $this;
-    }
 }

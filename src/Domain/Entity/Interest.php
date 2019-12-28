@@ -22,14 +22,22 @@ declare(strict_types = 1);
 namespace Av\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SixDreams\RichModel\Traits\RichModelTrait;
 
 /**
  * Patient interest entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\InterestRepository")
+ *
+ * @method int|null getId()
+ *
+ * @method string getName()
+ * @method Interest setName(string $name)
  */
 class Interest
 {
+    use RichModelTrait;
+
     /**
      * Identifier.
      *
@@ -61,40 +69,6 @@ class Interest
     public function __construct(string $name)
     {
         $this->name = $name;
-    }
-
-    /**
-     * Get ID.
-     *
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     /**

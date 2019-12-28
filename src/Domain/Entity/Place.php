@@ -22,14 +22,25 @@ declare(strict_types = 1);
 namespace Av\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SixDreams\RichModel\Traits\RichModelTrait;
 
 /**
  * Event venue entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\PlaceRepository")
+ *
+ * @method int|null getId()
+ *
+ * @method string getName()
+ * @method Place setName(string $name)
+ *
+ * @method string|null getAddress()
+ * @method Place setAddress(string $address)
  */
 class Place
 {
+    use RichModelTrait;
+
     /**
      * Identifier.
      *
@@ -52,62 +63,4 @@ class Place
      * @ORM\Column(type="string", length=255)
      */
     private string $address;
-
-    /**
-     * Get ID.
-     *
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get address.
-     *
-     * @return string|null
-     */
-    public function getAddress(): ?string
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set address.
-     *
-     * @param string $address
-     *
-     * @return $this
-     */
-    public function setAddress(string $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
 }

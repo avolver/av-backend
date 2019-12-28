@@ -22,14 +22,25 @@ declare(strict_types = 1);
 namespace Av\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SixDreams\RichModel\Traits\RichModelTrait;
 
 /**
  * Entity of the unit of volunteering.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\UnitRepository")
+ *
+ * @method int|null getId()
+ *
+ * @method string getName()
+ * @method Unit setName(string $name)
+ *
+ * @method int getType()
+ * @method Unit setType(int $type)
  */
 class Unit
 {
+    use RichModelTrait;
+
     /**
      * Identifier.
      *
@@ -52,62 +63,4 @@ class Unit
      * @ORM\Column(type="integer")
      */
     private int $type;
-
-    /**
-     * Get ID.
-     *
-     * @return int|null
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get type.
-     *
-     * @return int
-     */
-    public function getType(): int
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set type.
-     *
-     * @param int $type
-     *
-     * @return $this
-     */
-    public function setType(int $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
 }

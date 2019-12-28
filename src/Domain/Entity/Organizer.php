@@ -22,14 +22,25 @@ declare(strict_types = 1);
 namespace Av\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SixDreams\RichModel\Traits\RichModelTrait;
 
 /**
  * Event organizer entity.
  *
  * @ORM\Entity(repositoryClass="Av\Domain\Repository\OrganizerRepository")
+ *
+ * @method int|null getId()
+ *
+ * @method string getName()
+ * @method Organizer setName(string $name)
+ *
+ * @method string getContacts()
+ * @method Organizer setContacts(string $contacts)
  */
 class Organizer
 {
+    use RichModelTrait;
+
     /**
      * Identifier.
      *
@@ -52,62 +63,4 @@ class Organizer
      * @ORM\Column(type="string", length=255)
      */
     private string $contacts;
-
-    /**
-     * Get ID.
-     *
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get contacts.
-     *
-     * @return string
-     */
-    public function getContacts(): string
-    {
-        return $this->contacts;
-    }
-
-    /**
-     * Set contacts.
-     *
-     * @param string $contacts
-     *
-     * @return $this
-     */
-    public function setContacts(string $contacts): self
-    {
-        $this->contacts = $contacts;
-
-        return $this;
-    }
 }
